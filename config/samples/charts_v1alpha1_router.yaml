@@ -1,0 +1,93 @@
+apiVersion: charts.router.apollographql.com/v1alpha1
+kind: Router
+metadata:
+  name: router-sample
+spec:
+  # Default values copied from <project_dir>/helm-charts/router/values.yaml
+  affinity: {}
+  autoscaling:
+    enabled: false
+    maxReplicas: 100
+    minReplicas: 1
+    targetCPUUtilizationPercentage: 80
+  containerPorts:
+    health: 8088
+    http: 4000
+    metrics: 9090
+  extraContainers: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraLabels: {}
+  extraVolumeMounts: []
+  extraVolumes: []
+  fullnameOverride: ""
+  image:
+    pullPolicy: IfNotPresent
+    repository: ghcr.io/apollographql/router
+    tag: ""
+  imagePullSecrets: []
+  ingress:
+    annotations: {}
+    className: ""
+    enabled: false
+    hosts:
+    - host: chart-example.local
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+    tls: []
+  initContainers: []
+  lifecycle: {}
+  managedFederation:
+    apiKey: null
+    existingSecret: null
+    graphRef: ""
+  nameOverride: ""
+  nodeSelector: {}
+  podAnnotations: {}
+  podDisruptionBudget: {}
+  podSecurityContext: {}
+  priorityClassName: ""
+  probes:
+    liveness:
+      initialDelaySeconds: 0
+    readiness:
+      initialDelaySeconds: 0
+  replicaCount: 1
+  resources: {}
+  router:
+    args:
+    - --hot-reload
+    configuration:
+      health_check:
+        listen: 0.0.0.0:8088
+      supergraph:
+        listen: 0.0.0.0:4000
+      telemetry:
+        metrics:
+          prometheus:
+            enabled: false
+            listen: 0.0.0.0:9090
+            path: /metrics
+  securityContext: {}
+  service:
+    annotations: {}
+    port: 80
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+  serviceMonitor:
+    enabled: false
+  serviceentry:
+    enabled: false
+  supergraphFile: null
+  terminationGracePeriodSeconds: 30
+  tolerations: []
+  topologySpreadConstraints: []
+  virtualservice:
+    enabled: false
+  
+  

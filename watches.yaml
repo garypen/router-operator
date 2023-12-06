@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: charts.router.apollographql.com
+  version: v1alpha1
+  kind: Router
+  chart: helm-charts/router
+#+kubebuilder:scaffold:watch
